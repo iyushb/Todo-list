@@ -8,6 +8,7 @@ const indexRoutes = require('./routes/index');
 
 //server public folder
 app.use(express.static('public'));
+
 //use body-parser
 app.use(bodyParser.urlencoded({
     extended: true

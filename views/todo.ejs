@@ -3,7 +3,7 @@
 <div class="container">
     <h1>TO-DO LIST<i class="fa fa-angle-double-up"></i></h1>
     <form action="/todo" method="POST">
-        <input type="text" name="text" placeholder="Add New TODO">
+        <input type="text" name="text" placeholder="Add New TODO" required>
     </form>
     <ul>
         <%todo.forEach(function(items){%>

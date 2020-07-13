@@ -19,6 +19,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
+    console.log(req.body.text);
     todo.create({
         list: req.body.text
     }, function (err, createdTodo) {
