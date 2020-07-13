@@ -56,10 +56,15 @@ ul {
 
 }
 
+li form {
+    display: inline-block;
+}
+
 li span {
     display: inline-block;
     background-color: rgb(241, 50, 50);
     margin-right: 17px;
+    cursor: pointer;
     color: white;
     line-height: 40px;
     width: 0px;
@@ -71,4 +76,16 @@ li span {
 li:hover span {
     width: 40px;
     opacity: 1;
+}
+
+#deleter {
+    cursor: pointer;
+    width: 0px;
+    border: none;
+    background-color: rgb(241, 50, 50);
+    transition: all 0.5s;
+}
+
+li:hover #deleter {
+    width: 40px;
 }
