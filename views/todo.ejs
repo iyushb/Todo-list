@@ -7,7 +7,10 @@
     </form>
     <ul>
         <%todo.forEach(function(items){%>
-        <li><%=items.list%></li>
+        <li>
+            <span><i style=" font-size:24px" class=" fa fa-scissors "></i></span>
+            <%=items.list%>
+        </li>
         <%})%>
     </ul>
 </div>
