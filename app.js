@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 //require routes
 const todoRoutes = require('./routes/todo');
 const indexRoutes = require('./routes/index');
+//require method-override
+const methodOverride = require('method-override');
 
 //server public folder
 app.use(express.static('public'));
@@ -23,6 +25,10 @@ mongoose.connect('mongodb://localhost/todo_app', {
 //setting view engine as ejs
 app.set("view engine", "ejs");
 
+//use method-override
+app.use(methodOverride("_method"));
+
+//route setup
 app.use(indexRoutes);
 app.use('/todo', todoRoutes);
 
