@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({
 mongoose.connect('mongodb://localhost/todo_app', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: true
 }).then(() => console.log("----Database Connected----")).catch(err => console.log("DB connection error" + err.message));
 
 //setting view engine as ejs
