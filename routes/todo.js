@@ -2,10 +2,8 @@ const express = require('express');
 const router = express.Router();
 //require models
 const todo = require('../models/todo');
-const {
-    create
-} = require('../models/todo');
 
+//create route
 router.get('/', function (req, res) {
     todo.find({}, function (err, foundTodo) {
         if (err) {
@@ -25,6 +23,17 @@ router.post('/', function (req, res) {
     }, function (err, createdTodo) {
         if (err) {
             console.log("----error creating todo list----" + err);
+        } else {
+            res.redirect('/todo');
+        }
+    })
+});
+
+//delete route
+router.delete('/:id', function (req, res) {
+    todo.findByIdAndRemove(req.params.id, function (err, deleted) {
+        if (err) {
+            console.log('----error deleting the todo----' + err)
         } else {
             res.redirect('/todo');
         }
