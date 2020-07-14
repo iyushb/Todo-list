@@ -53,18 +53,18 @@ ul {
 .fa-angle-double-up {
     float: right;
     transition: transform .5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-
 }
 
 li form {
     display: inline-block;
+    transition: all 0.5s;
 }
 
 li span {
     display: inline-block;
     background-color: rgb(241, 50, 50);
-    margin-right: 17px;
     cursor: pointer;
+    margin-right: 5px;
     color: white;
     line-height: 40px;
     width: 0px;
@@ -78,6 +78,7 @@ li:hover span {
     opacity: 1;
 }
 
+
 #deleter {
     cursor: pointer;
     width: 0px;
@@ -88,4 +89,16 @@ li:hover span {
 
 li:hover #deleter {
     width: 40px;
+
+}
+
+#edit_form span {
+    background-color: #118299;
+}
+
+#editor {
+    border: none;
+    cursor: pointer;
+    background-color: #118299;
+    transition: all 0.5s;
 }
