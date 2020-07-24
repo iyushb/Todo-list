@@ -7,6 +7,10 @@ const todoRoutes = require('./routes/todo');
 const indexRoutes = require('./routes/index');
 //require method-override
 const methodOverride = require('method-override');
+//require authentication dependencies
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 //server public folder
 app.use(express.static('public'));
@@ -22,6 +26,19 @@ mongoose.connect('mongodb://localhost/todo_app', {
     useUnifiedTopology: true,
     useFindAndModify: true
 }).then(() => console.log("----Database Connected----")).catch(err => console.log("DB connection error" + err.message));
+
+//setting up passport and express session
+// app.use(require('express-session'))({
+//     secret: "62403502",
+//     resave: false,
+//     saveUnintialized: false
+// });
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 //setting view engine as ejs
 app.set("view engine", "ejs");
