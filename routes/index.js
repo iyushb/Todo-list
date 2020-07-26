@@ -4,7 +4,7 @@ const passport = require('passport');
 const router = express.Router();
 
 router.get('/', function (req, res) {
-    res.send('homepage');
+    res.render('homepage');
 });
 
 router.get('/register', function (req, res) {

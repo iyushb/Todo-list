@@ -15,6 +15,75 @@ body {
     color: gray;
 }
 
+.homepage-container {
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.homepage {
+    box-shadow: 0 0 5px #c0c0c0;
+    width: 250px;
+    margin: 1% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    min-height: 100px;
+    position: relative;
+}
+
+#homepage-heading {
+    margin-top: 15px;
+    background: none;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate-reverse;
+}
+
+.homepage>a {
+    border: none;
+    margin: 5px;
+    height: 45px;
+    color: rgba(128, 128, 128, 0.712);
+    background-color: #c0c0c0;
+    text-align: center;
+    line-height: 45px;
+}
+
+.homepage>a:hover {
+    color: #118299;
+    opacity: .7;
+    transition: all .7s;
+}
+
+#homepage-img {
+    width: 700px;
+    transform: rotate(-30deg);
+    position: absolute;
+    top: .001px;
+    left: 20px;
+    z-index: -1;
+
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0px 0px 10px #000000;
+    }
+
+    25% {
+        text-shadow: 0px 0px 15px #000000;
+    }
+
+    50% {
+        text-shadow: 0px 0px 20px #000000;
+    }
+
+    100% {
+        text-shadow: 0px 0px 25px #000000;
+    }
+}
+
+
 .container {
     background-color: #c0c0c0;
     width: 400px;
