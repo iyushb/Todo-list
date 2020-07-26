@@ -7,7 +7,7 @@ const todo = require('../models/todo');
 router.get('/', function (req, res) {
     todo.find({}, function (err, foundTodo) {
         if (err) {
-            console.log("----error finding todo list" + err);
+            console.log("----error finding todo list----" + err);
         } else {
             res.render('todo', {
                 todo: foundTodo

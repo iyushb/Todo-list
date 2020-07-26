@@ -8,6 +8,7 @@ const indexRoutes = require('./routes/index');
 //require method-override
 const methodOverride = require('method-override');
 //require authentication dependencies
+const User = require('./models/user.js');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const passportLocalMongoose = require('passport-local-mongoose');
@@ -28,17 +29,17 @@ mongoose.connect('mongodb://localhost/todo_app', {
 }).then(() => console.log("----Database Connected----")).catch(err => console.log("DB connection error" + err.message));
 
 //setting up passport and express session
-// app.use(require('express-session'))({
-//     secret: "62403502",
-//     resave: false,
-//     saveUnintialized: false
-// });
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(require('express-session')({
+    secret: "Rusty is the best and cutest dog in the world",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //setting view engine as ejs
 app.set("view engine", "ejs");
@@ -53,4 +54,4 @@ app.use('/todo', todoRoutes);
 
 app.listen(3000, function () {
     console.log('----server started----');
-})
+});
