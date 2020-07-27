@@ -3,18 +3,16 @@
 <div class="container">
     <h1>TO-DO LIST<i class="fa fa-angle-double-up"></i></h1>
     <form action="/todo" method="POST">
-        <input type="text" name="text" placeholder="Add New TODO" required>
+        <input type="text" name="todo[text]" placeholder="Add New TODO" required>
     </form>
     <ul>
-        <%todo.forEach(function(items){%>
+        <%todo.todos.forEach(function(items){%>
         <li data-aos='zoom-in'>
-            <form id="delete_form" action="todo/<%=items._id%>?_method=DELETE" method="POST">
-                <span><button id='deleter'><i style=" font-size:24px" class=" fa fa-scissors "></i></button></span>
-            </form>
+
             <!-- <form id="edit_form">
                 <span><button id='editor'><i style=" font-size:24px" class="fa fa-edit"></i></button></span>
             </form> -->
-            <%=items.list%>
+            <%=items%>
         </li>
         <%})%>
     </ul>
