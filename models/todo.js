@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const todoSchema = new mongoose.Schema({
+var todoSchema = new mongoose.Schema({
     list: String
 });
 

@@ -22,26 +22,23 @@ router.post('/', function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            console.log(createdTodo);
+            user.findById(req.user._id, function (err, foundUser) {
+                if (err) {
+                    console.log("----error finding user----" + err);
+                } else {
+                    foundUser.todos.push(createdTodo);
+                    foundUser.save(function (err, data) {
+                        if (err) {
+                            console.log("----error saving todo to user" + err);
+                        } else {
+                            console.log(data);
+                        }
+                    })
+                }
+            })
         }
-    })
-    // user.findById(req.user._id, function (err, foundUser) {
-    //     if (err) {
-    //         console.log('---error finding user while creating todo---' + err);
-    //     } else {
-    //         todo.create(req.body.todo, function (err, createdTodo) {
-    //             if (err) {
-    //                 console.log("---error creating todo---" + err);
-    //             } else {
-    //                 console.log(createdTodo);
-    //             }
-    //         });
-    // foundUser.todos.push({
-    //     todos: req.body.text
-    // });
-    // foundUser.save();
-    // }
-    // })
+    });
+
 });
 
 //delete route
