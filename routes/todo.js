@@ -18,7 +18,9 @@ router.get('/', isLoggedIn, function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    todo.create(req.body.todo, function (err, createdTodo) {
+    todo.create({
+        list: req.body.todo
+    }, function (err, createdTodo) {
         if (err) {
             console.log(err);
         } else {
