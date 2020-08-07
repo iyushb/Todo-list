@@ -47,6 +47,10 @@ app.set("view engine", "ejs");
 //use method-override
 app.use(methodOverride("_method"));
 
+app.use(function (req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+})
 //route setup
 app.use(indexRoutes);
 app.use('/todo', todoRoutes);
