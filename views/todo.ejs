@@ -8,6 +8,9 @@
     <ul id="list-ul">
         <%todo.todos.forEach(function(items){%>
         <li data-aos='zoom-in' id="list-li">
+            <form id="delete_form" action="todo/<%=items._id%>?_method=DELETE" method="POST">
+                <span><button id="deleter"><i style="font-size:24px" class="fa fa-scissors"></i></button></span>
+            </form>
             <%=items.list%>
         </li>
         <%})%>

@@ -33,42 +33,27 @@ router.post('/', function (req, res) {
             })
         }
     })
-
-    // todo.create({
-    //     list: req.body.todo
-    // }, function (err, createdTodo) {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         user.findById(req.user._id, function (err, foundUser) {
-    //             if (err) {
-    //                 console.log("----error finding user----" + err);
-    //             } else {
-    //                 foundUser.todos.push(createdTodo);
-    //                 foundUser.save(function (err, data) {
-    //                     if (err) {
-    //                         console.log("----error saving todo to user" + err);
-    //                     } else {
-    //                         console.log(data);
-    //                     }
-    //                 })
-    //             }
-    //         })
-    //     }
-    // });
-
 });
 
-//delete route
-// router.delete('/:id', function (req, res) {
-//     todo.findByIdAndRemove(req.params.id, function (err, deleted) {
-//         if (err) {
-//             console.log('----error deleting the todo----' + err)
-//         } else {
-//             res.redirect('/todo');
-//         }
-//     })
-// });
+// delete route
+router.delete('/:id', function (req, res) {
+    user.findByIdAndUpdate({
+        _id: req.user._id
+    }, {
+        $pull: {
+            todos: {
+                _id: req.params.id
+            }
+        }
+    }, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(data);
+            res.redirect("/todo");
+        }
+    })
+});
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
