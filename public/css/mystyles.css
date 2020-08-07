@@ -160,7 +160,6 @@ li:hover #deleter {
 
 }
 
-
 /* register-form */
 .register-form {
     width: 25%;
@@ -188,6 +187,25 @@ li:hover #deleter {
 }
 
 .register-form button:hover {
+    color: #118299;
+    opacity: .7;
+    transition: all .7s;
+}
+
+.logout-div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#logout {
+    border: none;
+    padding: 10px;
+    color: rgb(241, 50, 50);
+    background-color: #c0c0c0;
+    margin: auto 0;
+}
+
+#logout:hover {
     color: #118299;
     opacity: .7;
     transition: all .7s;
