@@ -6,7 +6,7 @@ const user = require('../models/user');
 
 //create route
 router.get('/', isLoggedIn, function (req, res) {
-    user.findById(req.user._id).populate('todos').exec(function (err, user) {
+    user.findById(req.user._id, function (err, user) {
         if (err) {
             console.log("----error finding user----" + err);
         } else {
@@ -18,28 +18,44 @@ router.get('/', isLoggedIn, function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    todo.create({
-        list: req.body.todo
-    }, function (err, createdTodo) {
+    user.findById(req.user._id, function (err, loggedUser) {
         if (err) {
-            console.log(err);
+            console.log("error finding logged user" + err);
         } else {
-            user.findById(req.user._id, function (err, foundUser) {
+            loggedUser.todos.push(req.body.todo);
+            loggedUser.save(function (err, user) {
                 if (err) {
-                    console.log("----error finding user----" + err);
+                    console.log("----error while saving todo to user----" + err);
                 } else {
-                    foundUser.todos.push(createdTodo);
-                    foundUser.save(function (err, data) {
-                        if (err) {
-                            console.log("----error saving todo to user" + err);
-                        } else {
-                            console.log(data);
-                        }
-                    })
+                    console.log(user);
+                    res.redirect('/todo');
                 }
             })
         }
-    });
+    })
+
+    // todo.create({
+    //     list: req.body.todo
+    // }, function (err, createdTodo) {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         user.findById(req.user._id, function (err, foundUser) {
+    //             if (err) {
+    //                 console.log("----error finding user----" + err);
+    //             } else {
+    //                 foundUser.todos.push(createdTodo);
+    //                 foundUser.save(function (err, data) {
+    //                     if (err) {
+    //                         console.log("----error saving todo to user" + err);
+    //                     } else {
+    //                         console.log(data);
+    //                     }
+    //                 })
+    //             }
+    //         })
+    //     }
+    // });
 
 });
 
