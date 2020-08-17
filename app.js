@@ -56,6 +56,6 @@ app.use(indexRoutes);
 app.use('/todo', todoRoutes);
 
 
-app.listen(5000, function () {
+app.listen(process.env.PORT || 5000, '0.0.0.0', function () {
     console.log('----server started----');
 });
