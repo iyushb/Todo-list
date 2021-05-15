@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 //database connection
-mongoose.connect('mongodb+srv://aayushDB:62403502@hsuyaa@cluster0.03pcw.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://<username>:<password>@hsuyaa@cluster0.03pcw.mongodb.net/<dbname>?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: true
